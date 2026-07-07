@@ -1,0 +1,88 @@
+import { Unit } from "./types";
+
+export const units: Unit[] = [
+  {
+    id: "ortho-7w",
+    name: "Orthopedics 7W",
+    status: "critical-shortage",
+    statusLabel: "Critical shortage",
+    shiftNeed: "Need 2 RNs · 7PM–7AM",
+    acuity: "High",
+    patientPopulation: "Post-operative orthopedic, high fall risk",
+    requiredCompetencies: [
+      "Post-op ortho care",
+      "Wound care",
+      "Falls prevention",
+      "VTE prophylaxis",
+      "Epic documentation",
+    ],
+    qualifiedMatches: 4,
+    fillRisk: "high",
+    manager: "Priya Nair",
+    gapCount: 2,
+    note: "Two consecutive night-shift call-outs with a high post-op census.",
+  },
+  {
+    id: "medicine-4e",
+    name: "Medicine 4E",
+    status: "at-risk",
+    statusLabel: "At risk",
+    shiftNeed: "Need 1 RN · 11PM–7AM",
+    acuity: "Medium",
+    patientPopulation: "General medicine, elevated delirium risk",
+    requiredCompetencies: [
+      "Med-surg care",
+      "Medication administration",
+      "Delirium precautions",
+      "Discharge documentation",
+    ],
+    qualifiedMatches: 3,
+    fillRisk: "medium",
+    manager: "Marcus Webb",
+    gapCount: 1,
+    note: "Single overnight gap; two internal staff have declined overtime.",
+  },
+  {
+    id: "icu",
+    name: "ICU",
+    status: "stable",
+    statusLabel: "Stable, specialized",
+    shiftNeed: "No open gaps",
+    acuity: "Critical",
+    patientPopulation: "Critical care, ventilator and titratable drip management",
+    requiredCompetencies: [
+      "Critical care",
+      "Ventilator management",
+      "Titratable drips",
+      "Advanced hemodynamic monitoring",
+    ],
+    qualifiedMatches: 0,
+    fillRisk: "low",
+    manager: "Emily Roberts",
+    gapCount: 0,
+    note: "Acuity-restricted — not currently a redeployment source or target.",
+  },
+  {
+    id: "post-acute-rehab",
+    name: "Post-Acute / Rehab",
+    status: "available-capacity",
+    statusLabel: "Available capacity",
+    shiftNeed: "Can release 1 RN after 9PM if census stable",
+    acuity: "Low",
+    patientPopulation: "Post-acute rehabilitation, discharge-focused",
+    requiredCompetencies: [
+      "Mobility support",
+      "Wound care",
+      "Discharge education",
+    ],
+    qualifiedMatches: 2,
+    fillRisk: "low",
+    manager: "Jordan Patel",
+    gapCount: 0,
+    note: "Census trending down; strong candidate as a redeployment source unit.",
+  },
+];
+
+export function getUnitById(id: string): Unit | undefined {
+  return units.find((u) => u.id === id);
+}
