@@ -9,6 +9,8 @@ import {
   CalendarCheck,
   History,
   NotebookPen,
+  Building2,
+  ClipboardCheck,
   type LucideIcon,
 } from "lucide-react";
 import type { RoleId } from "@/lib/roles";
@@ -24,12 +26,14 @@ export const NAV_BY_ROLE: Record<RoleId, NavItem[]> = {
     { label: "Command Center", href: "/command-center", icon: LayoutDashboard },
     { label: "Staffing Requests", href: "/requests", icon: ClipboardList },
     { label: "Nurse Matches", href: "/nurses", icon: Users },
+    { label: "Unit Metrics", href: "/unit-metrics", icon: Building2 },
     { label: "Skills Repository", href: "/skills", icon: BookOpenCheck },
     { label: "Messages", href: "/messages", icon: MessageSquare },
     { label: "Reports", href: "/reports", icon: FileBarChart },
   ],
   priya: [
     { label: "My Unit", href: "/requests/ortho-7w", icon: ClipboardList },
+    { label: "Unit Report", href: "/unit-report", icon: ClipboardCheck },
     { label: "Nurse Matches", href: "/nurses", icon: Users },
     { label: "Skills Repository", href: "/skills", icon: BookOpenCheck },
     { label: "Messages", href: "/messages", icon: MessageSquare },

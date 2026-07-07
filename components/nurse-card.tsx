@@ -12,7 +12,7 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
     .join("");
 
   return (
-    <div className="flex flex-col rounded-2xl border border-border bg-card p-4 shadow-sm">
+    <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-4 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">
@@ -56,7 +56,7 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
         </div>
       )}
 
-      <div className="mt-4 border-t border-border pt-4">
+      <div className="mt-auto border-t border-border pt-4">
         <Button
           size="sm"
           className="w-full"
