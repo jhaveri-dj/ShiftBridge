@@ -1,6 +1,11 @@
+"use client";
+
+import { useRole } from "@/lib/role-context";
 import { NavRail } from "@/components/nav-rail";
 import { Sidebar } from "@/components/sidebar";
 import { TopNav, type Breadcrumb } from "@/components/top-nav";
+import { UnitOutlookStrip } from "@/components/unit-outlook-strip";
+import { NurseAppShell } from "@/components/nurse-app-shell";
 
 export function AppShell({
   breadcrumbs,
@@ -9,13 +14,22 @@ export function AppShell({
   breadcrumbs: Breadcrumb[];
   children: React.ReactNode;
 }) {
+  const { roleId } = useRole();
+
+  if (roleId === "alex") {
+    return <NurseAppShell>{children}</NurseAppShell>;
+  }
+
   return (
     <div className="flex min-h-screen bg-background">
       <NavRail />
       <Sidebar />
       <div className="flex min-h-screen flex-1 flex-col">
         <TopNav breadcrumbs={breadcrumbs} />
-        <main className="flex-1 px-6 py-6">{children}</main>
+        <main className="flex-1 px-6 py-6">
+          {roleId === "priya" && <UnitOutlookStrip />}
+          {children}
+        </main>
       </div>
     </div>
   );

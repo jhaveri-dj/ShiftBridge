@@ -20,6 +20,7 @@ import { StatusBadge, statusLevelFromFillRisk } from "@/components/status-badge"
 import { LifecycleTimeline } from "@/components/lifecycle-timeline";
 import { MatchTable } from "@/components/match-table";
 import { NurseEligibilityList } from "@/components/nurse-eligibility-list";
+import { CoverageTimeline } from "@/components/coverage-timeline";
 import { useRole } from "@/lib/role-context";
 import { PRIYA_HOME_UNIT_ID } from "@/lib/roles";
 import { lifecycleSteps, requests as allRequests } from "@/data/requests";
@@ -48,7 +49,7 @@ export function RequestDetailView({
 
   return (
     <AppShell breadcrumbs={breadcrumbs}>
-      <div className="mb-6 rounded-2xl border border-border bg-card p-5 shadow-sm">
+      <div className="mb-6 rounded-2xl border border-border bg-card p-4 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-2.5">
@@ -97,7 +98,7 @@ export function RequestDetailView({
         <div className="mt-5 grid grid-cols-2 gap-4 border-t border-border pt-4 text-sm sm:grid-cols-4">
           <InfoItem label="Unit" value={request.unitName} />
           <InfoItem label="Shift" value={request.shiftNeed} />
-          <InfoItem label="Patient population" value={request.patientPopulation} />
+          <InfoItem label="Care context" value={request.patientPopulation} />
           <InfoItem label="Request created" value={request.createdAt} />
         </div>
       </div>
@@ -129,10 +130,16 @@ export function RequestDetailView({
         </div>
       </div>
 
-      <div className="mb-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <div className="mb-6 rounded-2xl border border-border bg-card p-5 shadow-sm">
         <h2 className="mb-6 text-sm font-semibold text-foreground">Request lifecycle</h2>
         <LifecycleTimeline steps={lifecycleSteps} currentStep={request.currentStep} />
       </div>
+
+      {isPriyaOwnUnit && (
+        <div className="mb-6">
+          <CoverageTimeline />
+        </div>
+      )}
 
       <div className="mb-6">
         <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
@@ -141,7 +148,9 @@ export function RequestDetailView({
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6">
           <MetricCard
             label="Gap severity"
-            value={request.gapSeverity}
+            value={
+              request.gapSeverity.charAt(0).toUpperCase() + request.gapSeverity.slice(1)
+            }
             icon={AlertTriangle}
             level={statusLevelFromFillRisk(request.gapSeverity)}
           />
@@ -167,7 +176,7 @@ export function RequestDetailView({
         </div>
       </div>
 
-      <div className="mb-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <div className="mb-6 rounded-2xl border border-border bg-card p-5 shadow-sm">
         <h2 className="mb-4 text-sm font-semibold text-foreground">Required competencies</h2>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {request.requiredCompetencies.map((c) => (
@@ -189,12 +198,12 @@ export function RequestDetailView({
         </div>
       </div>
 
-      <div className="mb-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <div className="mb-6 rounded-2xl border border-border bg-card p-5 shadow-sm">
         <h2 className="mb-1 text-sm font-semibold text-foreground">
           {isPriyaOwnUnit ? "Recommended matches for your unit" : "Recommended matches"}
         </h2>
         <p className="mb-4 text-xs text-muted-foreground">
-          CareMatch ranks matches using {rankingFactors.join(", ").toLowerCase()}.
+          ShiftBridge ranks matches using {rankingFactors.join(", ").toLowerCase()}.
         </p>
         {isPriyaOwnUnit ? (
           <NurseEligibilityList matches={rankedMatches} />
@@ -206,7 +215,7 @@ export function RequestDetailView({
       </div>
 
       {!isPriyaOwnUnit && otherOpenRequests.length > 0 && (
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
           <h2 className="mb-3 text-sm font-semibold text-foreground">
             Other open requests hospital-wide
           </h2>

@@ -19,13 +19,13 @@ export function MatchAnimation() {
         className="landing-line"
       />
       <g className="landing-node landing-node-1">
-        <circle cx="28" cy="28" r="9" fill="#4f46e5" />
+        <circle cx="28" cy="28" r="9" fill="var(--primary)" />
       </g>
       <g className="landing-node landing-node-2">
-        <circle cx="84" cy="28" r="9" fill="#0d9488" />
+        <circle cx="84" cy="28" r="9" fill="var(--highlight)" />
       </g>
       <g className="landing-node landing-node-3">
-        <circle cx="140" cy="28" r="9" fill="#d97706" />
+        <circle cx="140" cy="28" r="9" fill="var(--good)" />
       </g>
     </svg>
   );

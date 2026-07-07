@@ -9,7 +9,7 @@ import {
 } from "react";
 import { ROLES, type RoleId, type RoleMeta } from "@/lib/roles";
 
-const STORAGE_KEY = "carematch:role";
+const STORAGE_KEY = "shiftbridge:role";
 
 interface RoleContextValue {
   roleId: RoleId;

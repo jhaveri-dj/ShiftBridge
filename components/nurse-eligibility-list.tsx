@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { MatchScorePill } from "@/components/match-score-card";
 import { EligibilityVerdictLine } from "@/components/eligibility-verdict";
@@ -9,17 +11,28 @@ import type { MatchRow } from "@/data/types";
 export function NurseEligibilityList({ matches }: { matches: MatchRow[] }) {
   return (
     <div className="space-y-3">
-      {matches.map((m) => {
+      {matches.map((m, i) => {
         const nurse = getNurseById(m.nurseId);
         const verdict = nurse ? computeEligibility(nurse) : null;
+        const isTop = i === 0;
 
         return (
           <div
             key={m.nurseId}
-            className="flex flex-col gap-3 rounded-xl border border-border p-4 sm:flex-row sm:items-center sm:justify-between"
+            className={cn(
+              "flex flex-col gap-3 rounded-xl border p-4 sm:flex-row sm:items-center sm:justify-between",
+              isTop
+                ? "border-primary/40 bg-primary/5 ring-1 ring-primary/30"
+                : "border-border",
+            )}
           >
             <div className="flex items-center gap-3">
               <div>
+                {isTop && (
+                  <p className="mb-0.5 flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                    <Sparkles className="h-3 w-3" /> Top recommendation
+                  </p>
+                )}
                 <p className="text-sm font-semibold text-foreground">{m.nurseName}</p>
                 <p className="text-xs text-muted-foreground">
                   {m.homeUnit} · {m.availability}

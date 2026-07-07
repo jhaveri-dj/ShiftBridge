@@ -5,11 +5,11 @@ export const messageThreads: MessageThread[] = [
     id: "thread-ortho-7w",
     subject: "Orthopedics 7W — Night shift gap (2 RNs)",
     unitName: "Orthopedics 7W",
-    participants: ["Sarah Mitchell", "Priya Nair", "Jordan Patel", "CareMatch AI"],
+    participants: ["Sarah Mitchell", "Priya Nair", "Jordan Patel", "ShiftBridge AI"],
     messages: [
       {
         id: "m1",
-        author: "CareMatch AI",
+        author: "ShiftBridge AI",
         role: "System",
         isSystem: true,
         timestamp: "2:16 PM",
@@ -31,7 +31,7 @@ export const messageThreads: MessageThread[] = [
       },
       {
         id: "m4",
-        author: "CareMatch AI",
+        author: "ShiftBridge AI",
         role: "System",
         isSystem: true,
         timestamp: "2:33 PM",

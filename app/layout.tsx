@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CareMatch — Hospital Staffing & Competency Matching",
+  title: "ShiftBridge — Hospital Staffing & Competency Matching",
   description:
     "Match the right nurse to the right unit, faster. A portfolio prototype of a hospital staffing and competency-matching platform.",
 };

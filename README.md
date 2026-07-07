@@ -1,12 +1,12 @@
-# CareMatch
+# ShiftBridge
 
 **Match the right nurse to the right unit, faster.**
 
-CareMatch is a concept prototype for a hospital internal staffing and
+ShiftBridge is a concept prototype for a hospital internal staffing and
 competency-matching platform. Hospitals often have enough total staff, but
 the wrong staff in the wrong place — one unit is short while another has
 redeployable capacity, and nobody has a shared, real-time view of who is
-available, qualified, and appropriate to move. CareMatch gives staffing
+available, qualified, and appropriate to move. ShiftBridge gives staffing
 offices, unit managers, and professional practice teams a shared command
 center to see staffing gaps, ranked nurse matches, and competency coverage,
 while keeping both the sending and receiving unit managers in the approval

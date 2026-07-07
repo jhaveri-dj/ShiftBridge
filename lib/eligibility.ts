@@ -101,3 +101,87 @@ export function extractRecency(lastRelevantShift: string): string | null {
   const parts = lastRelevantShift.split("—");
   return parts.length > 1 ? parts[1].trim() : null;
 }
+
+export interface GapInfo {
+  effort: string;
+  ctaLabel: string;
+  ctaType: "training" | "signoff";
+}
+
+/** Effort/CTA to close a non-current competency, generic across any nurse. */
+const GAP_INFO: Record<string, GapInfo> = {
+  "VTE prophylaxis": {
+    effort: "~20 min online module",
+    ctaLabel: "Start this training",
+    ctaType: "training",
+  },
+  "Unit orientation — 7W": {
+    effort: "~2 hr shadow shift",
+    ctaLabel: "Schedule orientation",
+    ctaType: "training",
+  },
+  "Falls prevention": {
+    effort: "~15 min online module",
+    ctaLabel: "Start this training",
+    ctaType: "training",
+  },
+  "Post-op ortho care": {
+    effort: "~30 min online module",
+    ctaLabel: "Start this training",
+    ctaType: "training",
+  },
+  "Epic documentation": {
+    effort: "~20 min online module",
+    ctaLabel: "Start this training",
+    ctaType: "training",
+  },
+  "Wound care": {
+    effort: "~25 min online module",
+    ctaLabel: "Start this training",
+    ctaType: "training",
+  },
+  "Charge nurse readiness": {
+    effort: "Requires manager sign-off after next shift",
+    ctaLabel: "Request sign-off",
+    ctaType: "signoff",
+  },
+};
+
+const BLOCKED_GAP_INFO: Record<string, GapInfo> = {
+  "Unit orientation — 7W": {
+    effort: "Requires a 2 hr shadow shift plus manager sign-off",
+    ctaLabel: "Request sign-off",
+    ctaType: "signoff",
+  },
+};
+
+export function getGapInfo(name: string, blocked: boolean): GapInfo {
+  if (blocked) {
+    return (
+      BLOCKED_GAP_INFO[name] ?? {
+        effort: "Requires manager sign-off",
+        ctaLabel: "Request sign-off",
+        ctaType: "signoff",
+      }
+    );
+  }
+  return (
+    GAP_INFO[name] ?? {
+      effort: "~20 min online module",
+      ctaLabel: "Start this training",
+      ctaType: "training",
+    }
+  );
+}
+
+/** Plain-language framing of a competency gap for nurse-facing checklists. */
+export function gapFramingText(competency: Competency, required: boolean): string {
+  if (competency.status === "not-eligible") {
+    return required
+      ? `Required for this shift and not current — this blocks assignment until resolved.`
+      : `Not current. Not required for this shift, but recommended.`;
+  }
+  return required
+    ? `Required for this shift; refresher due, but won't block you from taking it.`
+    : `Not required for this shift, but recommended.`;
+}

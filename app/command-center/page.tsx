@@ -7,6 +7,7 @@ import {
   Target,
   Search,
   Sparkles,
+  Activity,
 } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/app-shell";
 import { MetricCard } from "@/components/metric-card";
@@ -22,6 +23,14 @@ const INSIGHTS = [
   "Post-Acute / Rehab can release one RN after 9PM if census stays stable, offsetting part of the Orthopedics 7W gap.",
   "ICU remains acuity-restricted with zero redeployable capacity and no open gaps — exclude it from tonight's matching pool.",
   "Two of four Orthopedics 7W matches would require overtime approval — approving Alex Chen first avoids added overtime risk.",
+  "Jordan Patel and Emily Roberts both carry sending-unit trade-offs: Jordan's home unit has confirmed release capacity, while pulling Emily adds overtime hours on top of an already-flagged risk. Weigh sending-unit pressure against overtime risk before approving either as a second RN.",
+];
+
+const WHAT_CHANGED = [
+  { time: "12 min ago", text: "2 sick calls in the last 45 min on Orthopedics 7W night shift." },
+  { time: "28 min ago", text: "Orthopedics 7W acuity increased from Medium to High." },
+  { time: "1 hr ago", text: "Post-Acute / Rehab confirmed it can release 1 RN after 9PM." },
+  { time: "2 hr ago", text: "Medicine 4E moved from Stable to At risk after a single overnight gap opened." },
 ];
 
 const SEVERITY_RANK: Record<Unit["status"], number> = {
@@ -83,24 +92,45 @@ export default function CommandCenterPage() {
           </div>
         </div>
 
-        <aside className="h-fit rounded-2xl border border-border bg-card p-5 shadow-sm">
-          <div className="mb-4 flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <Sparkles className="h-4 w-4" />
+        <div className="space-y-6">
+          <aside className="h-fit rounded-2xl border border-border bg-card p-4 shadow-sm">
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-warning-bg text-warning">
+                <Activity className="h-4 w-4" />
+              </div>
+              <h2 className="text-sm font-semibold text-foreground">What changed</h2>
             </div>
-            <h2 className="text-sm font-semibold text-foreground">
-              AI Triage Insights
-            </h2>
-          </div>
-          <ul className="space-y-4">
-            {INSIGHTS.map((insight, i) => (
-              <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                {insight}
-              </li>
-            ))}
-          </ul>
-        </aside>
+            <ul className="space-y-3.5">
+              {WHAT_CHANGED.map((event, i) => (
+                <li key={i} className="text-sm leading-relaxed">
+                  <span className="block text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    {event.time}
+                  </span>
+                  <span className="text-foreground">{event.text}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+
+          <aside className="h-fit rounded-2xl border border-border bg-card p-4 shadow-sm">
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Sparkles className="h-4 w-4" />
+              </div>
+              <h2 className="text-sm font-semibold text-foreground">
+                AI Triage Insights
+              </h2>
+            </div>
+            <ul className="space-y-4">
+              {INSIGHTS.map((insight, i) => (
+                <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {insight}
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
       </div>
     </AppShell>
   );

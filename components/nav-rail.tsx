@@ -17,7 +17,7 @@ export function NavRail() {
       <Link
         href={role.homeHref}
         className="mb-6 flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
-        title="CareMatch"
+        title="ShiftBridge"
       >
         <Stethoscope className="h-4.5 w-4.5" />
       </Link>
@@ -36,7 +36,7 @@ export function NavRail() {
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
                 isActive
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
                   : "text-sidebar-foreground/60 hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
               )}
             >

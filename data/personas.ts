@@ -15,26 +15,26 @@ export const personas: Persona[] = [
     name: "Sarah Mitchell",
     role: "Staffing Office Lead",
     description:
-      "See open staffing gaps across every unit, ranked matches, and fill-rate performance in one command center.",
+      "See hospital-wide gaps, unit risk, AI triage, and coverage recommendations.",
     href: "/command-center",
-    ctaLabel: "Enter Command Center",
+    ctaLabel: "Open Command Center",
   },
   {
     id: "priya",
     name: "Priya Nair",
     role: "Unit Manager, Orthopedics 7W",
     description:
-      "Review recommended nurse matches for your unit's open request and approve or decline based on fit.",
+      "Review unit outlook, required competencies, and recommended nurse matches.",
     href: "/requests/ortho-7w",
-    ctaLabel: "View My Unit's Request",
+    ctaLabel: "Review Unit Request",
   },
   {
     id: "alex",
     name: "Alex Chen",
     role: "Float Pool RN",
     description:
-      "See tonight's shift offer, your match reasons, and your own competency readiness.",
-    href: "/nurse/home",
-    ctaLabel: "Enter My Portal",
+      "Review a shift offer, match reasons, pay estimate, and safety guardrails.",
+    href: "/nurse/shift-offer",
+    ctaLabel: "View Shift Offer",
   },
 ];

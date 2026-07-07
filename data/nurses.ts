@@ -21,7 +21,7 @@ export const nurses: Nurse[] = [
       { name: "VTE prophylaxis", status: "current", category: "Clinical Care", level: 92 },
       { name: "Epic documentation", status: "current", category: "Documentation", level: 96 },
       { name: "Unit orientation — 7W", status: "current", category: "Unit Readiness", level: 85 },
-      { name: "Charge readiness", status: "refresher", category: "Professional Practice", level: 60 },
+      { name: "Charge nurse readiness", status: "refresher", category: "Professional Practice", level: 60 },
     ],
     matchReasons: [
       "Float Pool assignment — no home-unit pressure or sending-manager approval needed.",

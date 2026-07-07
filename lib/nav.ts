@@ -7,6 +7,8 @@ import {
   FileBarChart,
   Home,
   CalendarCheck,
+  History,
+  NotebookPen,
   type LucideIcon,
 } from "lucide-react";
 import type { RoleId } from "@/lib/roles";
@@ -34,8 +36,10 @@ export const NAV_BY_ROLE: Record<RoleId, NavItem[]> = {
   ],
   alex: [
     { label: "Home", href: "/nurse/home", icon: Home },
-    { label: "Shift Offers", href: "/nurse/shift-offer", icon: CalendarCheck },
-    { label: "My Competencies", href: "/nurse/competencies", icon: BookOpenCheck },
-    { label: "Messages", href: "/messages", icon: MessageSquare },
+    { label: "Shift Offer", href: "/nurse/shift-offer", icon: CalendarCheck },
+    { label: "My Shifts", href: "/nurse/my-shifts", icon: History },
+    { label: "Competencies", href: "/nurse/competencies", icon: BookOpenCheck },
+    { label: "Handoff Notes", href: "/nurse/log-patients", icon: NotebookPen },
+    { label: "Messages", href: "/nurse/messages", icon: MessageSquare },
   ],
 };

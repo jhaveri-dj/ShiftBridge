@@ -55,44 +55,50 @@
   --color-critical: var(--critical);
   --color-critical-foreground: var(--critical-foreground);
   --color-critical-bg: var(--critical-bg);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --tracking-heading: -0.03em;
 }
 
 :root {
-  --background: oklch(0.985 0.002 247);
-  --foreground: oklch(0.18 0.02 264);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 264);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 264);
-  --primary: oklch(0.47 0.19 265);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.96 0.01 264);
-  --secondary-foreground: oklch(0.3 0.03 264);
-  --muted: oklch(0.965 0.006 264);
-  --muted-foreground: #475569;
-  --accent: oklch(0.94 0.03 265);
-  --accent-foreground: oklch(0.3 0.1 265);
+  /* ShiftBridge — deep slate-teal primary, warm copper highlight */
+  --background: oklch(0.987 0.004 208);
+  --foreground: oklch(0.22 0.028 215);
+  --card: oklch(1 0.002 208);
+  --card-foreground: oklch(0.22 0.028 215);
+  --popover: oklch(1 0.002 208);
+  --popover-foreground: oklch(0.22 0.028 215);
+  --primary: oklch(0.395 0.065 208);
+  --primary-foreground: oklch(0.98 0.005 208);
+  --secondary: oklch(0.955 0.012 208);
+  --secondary-foreground: oklch(0.32 0.04 212);
+  --muted: oklch(0.962 0.008 208);
+  --muted-foreground: oklch(0.48 0.028 215);
+  --accent: oklch(0.948 0.014 208);
+  --accent-foreground: oklch(0.32 0.045 212);
+  --highlight: oklch(0.58 0.14 42);
+  --highlight-foreground: oklch(0.99 0.005 42);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.91 0.008 264);
-  --input: oklch(0.91 0.008 264);
-  --ring: oklch(0.6 0.15 265);
-  --chart-1: oklch(0.47 0.19 265);
-  --chart-2: oklch(0.55 0.2 295);
-  --chart-3: oklch(0.6 0.16 235);
-  --chart-4: oklch(0.7 0.14 200);
-  --chart-5: oklch(0.62 0.2 320);
+  --border: oklch(0.905 0.012 208);
+  --input: oklch(0.905 0.012 208);
+  --ring: oklch(0.52 0.07 208);
+  --chart-1: oklch(0.395 0.065 208);
+  --chart-2: oklch(0.58 0.14 42);
+  --chart-3: oklch(0.55 0.08 185);
+  --chart-4: oklch(0.6 0.15 155);
+  --chart-5: oklch(0.48 0.05 240);
   --radius: 0.75rem;
-  --sidebar: oklch(0.19 0.035 265);
-  --sidebar-foreground: oklch(0.93 0.01 264);
-  --sidebar-primary: oklch(0.6 0.18 265);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.27 0.04 265);
-  --sidebar-accent-foreground: oklch(0.96 0.01 264);
-  --sidebar-border: oklch(0.28 0.03 265);
-  --sidebar-ring: oklch(0.6 0.15 265);
-  --good: oklch(0.6 0.15 155);
+  --sidebar: oklch(0.24 0.045 208);
+  --sidebar-foreground: oklch(0.92 0.015 208);
+  --sidebar-primary: oklch(0.55 0.08 205);
+  --sidebar-primary-foreground: oklch(0.99 0.005 208);
+  --sidebar-accent: oklch(0.30 0.05 208);
+  --sidebar-accent-foreground: oklch(0.95 0.012 208);
+  --sidebar-border: oklch(0.32 0.04 208);
+  --sidebar-ring: oklch(0.52 0.07 208);
+  --good: oklch(0.52 0.12 158);
   --good-foreground: oklch(0.98 0 0);
-  --good-bg: oklch(0.95 0.05 155);
+  --good-bg: oklch(0.955 0.04 158);
   --warning: oklch(0.68 0.16 75);
   --warning-foreground: oklch(0.98 0 0);
   --warning-bg: oklch(0.95 0.07 85);
@@ -102,37 +108,39 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.16 0.02 208);
+  --foreground: oklch(0.96 0.01 208);
+  --card: oklch(0.21 0.025 208);
+  --card-foreground: oklch(0.96 0.01 208);
+  --popover: oklch(0.21 0.025 208);
+  --popover-foreground: oklch(0.96 0.01 208);
+  --primary: oklch(0.62 0.08 205);
+  --primary-foreground: oklch(0.18 0.025 208);
+  --secondary: oklch(0.28 0.03 208);
+  --secondary-foreground: oklch(0.96 0.01 208);
+  --muted: oklch(0.28 0.03 208);
+  --muted-foreground: oklch(0.68 0.02 208);
+  --accent: oklch(0.28 0.035 208);
+  --accent-foreground: oklch(0.96 0.01 208);
+  --highlight: oklch(0.68 0.14 42);
+  --highlight-foreground: oklch(0.18 0.02 42);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.55 0.07 208);
+  --chart-1: oklch(0.62 0.08 205);
+  --chart-2: oklch(0.68 0.14 42);
+  --chart-3: oklch(0.55 0.08 185);
+  --chart-4: oklch(0.6 0.15 155);
+  --chart-5: oklch(0.48 0.05 240);
+  --sidebar: oklch(0.19 0.035 208);
+  --sidebar-foreground: oklch(0.92 0.015 208);
+  --sidebar-primary: oklch(0.62 0.08 205);
+  --sidebar-primary-foreground: oklch(0.18 0.025 208);
+  --sidebar-accent: oklch(0.28 0.04 208);
+  --sidebar-accent-foreground: oklch(0.96 0.01 208);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: oklch(0.55 0.07 208);
 }
 
 @layer base {
@@ -145,13 +153,31 @@
   html {
     @apply font-sans;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    letter-spacing: var(--tracking-heading);
+  }
+}
+
+/* Hide scrollbar for horizontal tab strips (mobile nurse nav). */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Landing page — subtle floor-plan grid backdrop */
 .landing-grid-backdrop {
   background-image:
-    linear-gradient(rgba(79, 70, 229, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 70, 229, 0.06) 1px, transparent 1px);
+    linear-gradient(color-mix(in oklch, var(--primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--primary) 8%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%);
   mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%);
@@ -212,10 +238,90 @@
   animation: landing-line-draw 0.7s ease-out 0.45s forwards;
 }
 
+/* Landing page — continuous ambient blobs (very low opacity, never competes
+ * with content). Slow drift + gentle scale so the hero feels alive. */
+.landing-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.landing-aurora::before,
+.landing-aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.5;
+}
+.landing-aurora::before {
+  width: 42rem;
+  height: 42rem;
+  top: -14rem;
+  left: -8rem;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in oklch, var(--primary) 32%, transparent),
+    transparent 68%
+  );
+  animation: landing-drift-a 22s ease-in-out infinite;
+}
+.landing-aurora::after {
+  width: 34rem;
+  height: 34rem;
+  top: -6rem;
+  right: -8rem;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in oklch, var(--highlight) 26%, transparent),
+    transparent 66%
+  );
+  animation: landing-drift-b 26s ease-in-out infinite;
+}
+
+@keyframes landing-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3rem, 2rem, 0) scale(1.12);
+  }
+}
+
+@keyframes landing-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-2.5rem, 1.5rem, 0) scale(0.92);
+  }
+}
+
+/* Softly pulsing ambient dots layered behind the hero. */
+@keyframes landing-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.35);
+  }
+}
+.landing-dot {
+  animation: landing-dot-pulse 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .landing-node,
   .landing-line,
-  .landing-node-3 circle {
+  .landing-node-3 circle,
+  .landing-aurora::before,
+  .landing-aurora::after,
+  .landing-dot {
     animation: none;
     opacity: 1;
     stroke-dashoffset: 0;

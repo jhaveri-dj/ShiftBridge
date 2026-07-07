@@ -20,7 +20,7 @@ export default function RequestsIndexPage() {
             <Link
               key={req.id}
               href={`/requests/${req.unitId}`}
-              className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+              className="flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
             >
               <div>
                 <div className="flex items-center gap-2.5">

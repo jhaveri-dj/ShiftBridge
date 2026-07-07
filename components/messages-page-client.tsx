@@ -42,7 +42,7 @@ export function MessagesPageClient() {
     <AppShell breadcrumbs={[{ label: "Messages" }]}>
       <PageHeader
         title="Messages"
-        subtitle="Staffing-request threads between the staffing office, unit managers, and CareMatch AI."
+        subtitle="Staffing-request threads between the staffing office, unit managers, and ShiftBridge AI."
       />
 
       {nurse && (

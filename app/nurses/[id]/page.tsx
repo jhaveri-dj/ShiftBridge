@@ -49,7 +49,7 @@ export default async function NurseProfilePage({
         { label: nurse.name },
       ]}
     >
-      <div className="mb-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <div className="mb-6 rounded-2xl border border-border bg-card p-5 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-xl font-semibold text-accent-foreground">
@@ -93,7 +93,7 @@ export default async function NurseProfilePage({
         </p>
       </div>
 
-      <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm sm:grid-cols-3 xl:grid-cols-5">
+      <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm sm:grid-cols-3 xl:grid-cols-5">
         <ProfileItem icon={Briefcase} label="Role" value={nurse.role} />
         <ProfileItem icon={Building2} label="Home unit" value={nurse.homeUnit} />
         <ProfileItem
@@ -111,7 +111,7 @@ export default async function NurseProfilePage({
 
       <div className="mb-6 grid grid-cols-1 gap-6 xl:grid-cols-[1.4fr_1fr]">
         <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
             <h2 className="mb-3 text-sm font-semibold text-foreground">
               Why this nurse is a strong match
             </h2>
@@ -125,7 +125,7 @@ export default async function NurseProfilePage({
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
             <h2 className="mb-1 text-sm font-semibold text-foreground">
               Competency readiness
             </h2>
@@ -168,7 +168,7 @@ export default async function NurseProfilePage({
             <RedeploymentChart history={nurse.redeploymentHistory} />
           </ChartCard>
 
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
             <h2 className="mb-3 text-sm font-semibold text-foreground">Manager notes</h2>
             <blockquote className="rounded-xl bg-muted/60 p-4 text-sm italic leading-relaxed text-foreground">
               &ldquo;{nurse.managerNote.quote}&rdquo;

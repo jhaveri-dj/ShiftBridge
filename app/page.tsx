@@ -7,10 +7,14 @@ import {
   LayoutDashboard,
   ClipboardList,
   BadgeCheck,
+  AlertTriangle,
+  Sparkles,
+  ClipboardCheck,
+  UserCheck,
+  CheckCircle2,
   type LucideIcon,
 } from "lucide-react";
 import { personas } from "@/data/personas";
-import { Button } from "@/components/ui/button";
 import { useRole } from "@/lib/role-context";
 import { MatchAnimation } from "@/components/match-animation";
 import { cn } from "@/lib/utils";
@@ -19,61 +23,103 @@ import type { RoleId } from "@/lib/roles";
 interface PersonaStyle {
   icon: LucideIcon;
   iconWrap: string;
-  border: string;
-  link: string;
 }
 
 const PERSONA_STYLE: Record<RoleId, PersonaStyle> = {
-  sarah: {
-    icon: LayoutDashboard,
-    iconWrap: "bg-indigo-50 text-indigo-600",
-    border: "hover:border-indigo-300/70",
-    link: "text-indigo-600",
-  },
-  priya: {
-    icon: ClipboardList,
-    iconWrap: "bg-teal-50 text-teal-600",
-    border: "hover:border-teal-300/70",
-    link: "text-teal-600",
-  },
-  alex: {
-    icon: BadgeCheck,
-    iconWrap: "bg-amber-50 text-amber-600",
-    border: "hover:border-amber-300/70",
-    link: "text-amber-600",
-  },
+  sarah: { icon: LayoutDashboard, iconWrap: "bg-primary/10 text-primary" },
+  priya: { icon: ClipboardList, iconWrap: "bg-chart-3/15 text-chart-3" },
+  alex: { icon: BadgeCheck, iconWrap: "bg-highlight/15 text-highlight" },
 };
+
+const WORKFLOW = [
+  { label: "Hospital gap", icon: AlertTriangle },
+  { label: "AI match", icon: Sparkles },
+  { label: "Unit manager review", icon: ClipboardCheck },
+  { label: "Nurse accepts", icon: UserCheck },
+  { label: "Coverage confirmed", icon: CheckCircle2 },
+];
 
 export default function Home() {
   const { setRoleId } = useRole();
 
   return (
-    <div className="relative flex min-h-screen flex-1 flex-col overflow-hidden bg-gradient-to-b from-white via-slate-50 to-indigo-50/40">
+    <div className="relative flex min-h-screen flex-1 flex-col overflow-hidden bg-gradient-to-b from-background via-muted/30 to-primary/5">
+      <div className="landing-aurora" aria-hidden="true" />
       <div className="landing-grid-backdrop pointer-events-none absolute inset-0" />
 
-      <div className="relative flex flex-1 flex-col items-center justify-center px-6 py-20">
-        <div className="mb-14 flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Stethoscope className="h-5 w-5" />
+      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-8">
+        {/* Brand row */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+              <Stethoscope className="h-4.5 w-4.5" />
+            </div>
+            <span className="text-lg font-semibold tracking-tight text-foreground">
+              ShiftBridge
+            </span>
           </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground">
-            CareMatch
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/70 px-3 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-highlight" />
+            Portfolio demo · synthetic data
           </span>
         </div>
 
-        <MatchAnimation />
+        {/* Hero */}
+        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+              <Sparkles className="h-3.5 w-3.5" />
+              Match the right nurse to the right unit, faster.
+            </p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
+              Hospital staffing gaps are not just a scheduling problem.
+              <span className="block text-primary">
+                They are a safety, competency, approval, and coverage problem.
+              </span>
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              ShiftBridge helps staffing offices, unit managers, and float pool
+              nurses coordinate urgent coverage using availability, competencies,
+              acuity, fatigue risk, overtime exposure, and approval workflows.
+            </p>
+          </div>
 
-        <div className="mt-6 max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Match the right nurse to the right unit, faster.
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg font-normal leading-relaxed text-muted-foreground">
-            Real-time hospital staffing and competency matching for nursing
-            leaders, staffing offices, and professional practice teams.
-          </p>
+          <div className="relative hidden justify-center lg:flex">
+            <div className="w-full max-w-sm rounded-3xl border border-border bg-card/80 p-8 shadow-lg backdrop-blur-sm">
+              <MatchAnimation />
+              <p className="mt-6 text-center text-sm font-medium text-foreground">
+                Real-time competency-aware matching
+              </p>
+              <p className="mt-1 text-center text-xs leading-relaxed text-muted-foreground">
+                Every match weighs safety, fit, fatigue, and approval — not just
+                who is free.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-16 grid w-full max-w-4xl gap-5 sm:grid-cols-3">
+        {/* Workflow strip */}
+        <div className="mt-12 rounded-2xl border border-border bg-card/70 px-4 py-4 shadow-sm backdrop-blur-sm sm:px-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-3 sm:justify-between">
+            {WORKFLOW.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.label} className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 rounded-full bg-muted/70 px-3 py-1.5 text-xs font-medium text-foreground">
+                    <Icon className="h-3.5 w-3.5 text-primary" />
+                    {step.label}
+                  </span>
+                  {i < WORKFLOW.length - 1 && (
+                    <ArrowRight className="hidden h-3.5 w-3.5 shrink-0 text-muted-foreground/60 sm:block" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Role cards */}
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
           {personas.map((persona) => {
             const style = PERSONA_STYLE[persona.id];
             const Icon = style.icon;
@@ -82,32 +128,26 @@ export default function Home() {
                 key={persona.id}
                 href={persona.href}
                 onClick={() => setRoleId(persona.id)}
-                className={cn(
-                  "group flex flex-col rounded-2xl border border-border bg-card/90 p-7 text-left shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg",
-                  style.border,
-                )}
+                className="group flex flex-col rounded-2xl border border-border bg-card p-6 text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/40 hover:shadow-xl"
               >
                 <div
                   className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-xl",
+                    "flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-110",
                     style.iconWrap,
                   )}
                 >
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 text-base font-semibold text-foreground">
+                <h3 className="mt-4 text-base font-semibold tracking-tight text-foreground">
                   {persona.name}
                 </h3>
-                <p className={cn("text-sm font-medium", style.link)}>{persona.role}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  {persona.role}
+                </p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {persona.description}
                 </p>
-                <div
-                  className={cn(
-                    "mt-6 flex items-center gap-1.5 text-sm font-medium",
-                    style.link,
-                  )}
-                >
+                <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                   {persona.ctaLabel}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </div>
@@ -116,19 +156,12 @@ export default function Home() {
           })}
         </div>
 
-        <Button
-          variant="ghost"
-          className="mt-12 text-muted-foreground"
-          render={<Link href="/command-center" onClick={() => setRoleId("sarah")} />}
-          nativeButton={false}
-        >
-          Or explore the full app <ArrowRight className="h-3.5 w-3.5" />
-        </Button>
+        {/* Disclaimer */}
+        <p className="mt-10 text-center text-xs leading-relaxed text-muted-foreground/70">
+          Portfolio demo using synthetic data only. Not connected to a live
+          clinical, payroll, or scheduling system.
+        </p>
       </div>
-
-      <footer className="relative border-t border-border/60 py-5 text-center text-[11px] text-muted-foreground/50">
-        Synthetic data only · Portfolio prototype · Built for workflow exploration
-      </footer>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ChevronRight, LogOut } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useRole } from "@/lib/role-context";
+import { UserMenu } from "@/components/user-menu";
 
 export interface Breadcrumb {
   label: string;
@@ -11,13 +11,7 @@ export interface Breadcrumb {
 }
 
 export function TopNav({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
-  const { role, clearRole } = useRole();
-  const router = useRouter();
-
-  function handleLogout() {
-    clearRole();
-    router.push("/");
-  }
+  const { role } = useRole();
 
   return (
     <header className="flex h-14 shrink-0 items-center justify-between border-b border-border bg-card/60 px-6 backdrop-blur">
@@ -48,17 +42,7 @@ export function TopNav({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
             {role.title}
           </p>
         </div>
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-          {role.initials}
-        </div>
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground"
-          title="Switch persona"
-        >
-          <LogOut className="h-4 w-4" />
-        </button>
+        <UserMenu />
       </div>
     </header>
   );

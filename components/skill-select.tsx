@@ -11,12 +11,16 @@ import {
 export function FilterSelect({
   label,
   options,
+  value,
+  onChange,
 }: {
   label: string;
   options: string[];
+  value: string;
+  onChange: (value: string) => void;
 }) {
   return (
-    <Select defaultValue={options[0]}>
+    <Select value={value} onValueChange={(v) => v && onChange(v)}>
       <SelectTrigger className="w-full sm:w-44">
         <SelectValue placeholder={label} />
       </SelectTrigger>

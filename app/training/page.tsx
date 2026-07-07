@@ -11,7 +11,7 @@ export default function TrainingPage() {
       />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {trainingPaths.map((t) => (
-          <div key={t.id} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+          <div key={t.id} className="rounded-2xl border border-border bg-card p-4 shadow-sm">
             <div className="flex items-start justify-between gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <GraduationCap className="h-4.5 w-4.5" />

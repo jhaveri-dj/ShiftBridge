@@ -17,12 +17,14 @@ export function CompetencyBar({
   level,
   required = false,
   recency,
+  source,
 }: {
   name: string;
   status: CompetencyStatus;
   level?: number;
   required?: boolean;
   recency?: string | null;
+  source?: string;
 }) {
   const meta = STATUS_META[status];
   const pct = level ?? meta.defaultLevel;
@@ -35,7 +37,11 @@ export function CompetencyBar({
         <span className={cn("text-xs font-medium", meta.text)}>
           {label}
           {status === "current" && recency && (
-            <span className="font-normal text-muted-foreground"> — last verified {recency}</span>
+            <span className="font-normal text-muted-foreground">
+              {" "}
+              — last verified {recency}
+              {source && ` · Source: ${source}`}
+            </span>
           )}
         </span>
       </div>

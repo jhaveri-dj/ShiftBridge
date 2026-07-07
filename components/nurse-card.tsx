@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import type { Nurse } from "@/data/types";
 import { StatusBadge, statusLevelFromRisk } from "@/components/status-badge";
 import { MatchScorePill } from "@/components/match-score-card";
@@ -12,7 +12,7 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
     .join("");
 
   return (
-    <div className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <div className="flex flex-col rounded-2xl border border-border bg-card p-4 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">
@@ -46,6 +46,15 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
           </span>
         )}
       </div>
+
+      {nurse.matchReasons.length > 0 && (
+        <div className="mt-3 flex gap-2 rounded-lg bg-muted/60 px-3 py-2">
+          <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            {nurse.matchReasons[0]}
+          </p>
+        </div>
+      )}
 
       <div className="mt-4 border-t border-border pt-4">
         <Button
