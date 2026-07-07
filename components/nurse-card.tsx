@@ -13,14 +13,16 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
 
   return (
     <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">
             {initials}
           </div>
-          <div>
-            <h3 className="text-base font-semibold text-foreground">{nurse.name}</h3>
-            <p className="text-sm text-muted-foreground">{nurse.role}</p>
+          <div className="min-w-0">
+            <h3 className="text-base font-semibold leading-tight text-foreground">
+              {nurse.name}
+            </h3>
+            <p className="text-sm leading-snug text-muted-foreground">{nurse.role}</p>
           </div>
         </div>
         {nurse.matchScore && <MatchScorePill score={nurse.matchScore} />}
@@ -35,20 +37,24 @@ export function NurseCard({ nurse }: { nurse: Nurse }) {
         </p>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-3 flex min-h-7 flex-wrap items-center gap-2">
         <StatusBadge
           label={`Overtime risk: ${nurse.overtimeRisk}`}
           level={statusLevelFromRisk(nurse.overtimeRisk)}
         />
-        {nurse.floatEligible && (
-          <span className="rounded-full border border-border bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+        {nurse.floatEligible ? (
+          <span className="rounded-full border border-border bg-muted px-2.5 py-1 text-xs font-medium leading-none text-muted-foreground">
+            Float eligible
+          </span>
+        ) : (
+          <span className="invisible rounded-full border border-transparent px-2.5 py-1 text-xs leading-none">
             Float eligible
           </span>
         )}
       </div>
 
       {nurse.matchReasons.length > 0 && (
-        <div className="mt-3 flex gap-2 rounded-lg bg-muted/60 px-3 py-2">
+        <div className="mt-3 flex min-h-[5.5rem] flex-1 gap-2 rounded-lg bg-muted/60 px-3 py-2.5">
           <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
           <p className="text-xs leading-relaxed text-muted-foreground">
             {nurse.matchReasons[0]}

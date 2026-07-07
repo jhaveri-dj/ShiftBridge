@@ -17,7 +17,7 @@ export function MatchScorePill({ score }: { score: number }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold",
+        "inline-flex h-7 shrink-0 items-center justify-center rounded-full border px-2.5 text-xs font-semibold leading-none",
         level === "good" && "border-good/20 bg-good-bg text-good",
         level === "warning" && "border-warning/20 bg-warning-bg text-warning",
         level === "critical" && "border-critical/20 bg-critical-bg text-critical",
